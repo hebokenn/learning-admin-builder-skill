@@ -1,114 +1,119 @@
-# Requirements Intake
+# 需求澄清流程
 
-Use this intake before planning or implementing a learning-project admin site. Inspect local files, existing code, sample spreadsheets, and documentation first. Ask the user only for choices that cannot be discovered.
+在规划或实现任何学习项目后台前，必须先用这个流程。先检查目标项目已有文件、代码、样例表格和说明，再问用户。不要重复询问文件里已经能看出的信息。
 
-## 1. Product Goal
+## 1. 项目目标
 
-Capture:
+记录：
 
-- Project name and short domain description.
-- Primary outcome: monitor progress, operate training delivery, certify learners, schedule coaching, report to managers, or another goal.
-- Daily users: admins, trainers, mentors, learners, managers, external partners.
-- Success criteria for v1.
+- 项目名称和一句话说明。
+- 主要目标：监控进度、运营培训、认证学员、预约辅导、向经理汇报，或其他目标。
+- 日常用户：管理员、培训师、导师、学员、经理、外部合作方。
+- 第一版成功标准。
 
-Default: build the actual admin tool first, not a landing page.
+默认做实际后台工具，不做营销首页。
 
-## 2. Roles And Access
+## 2. 角色和权限
 
-Define role boundaries:
+定义角色边界：
 
-- Admin: system setup, imports, users, reports, all learners.
-- Trainer or mentor: assigned learners, follow-ups, scoring, coaching sessions.
-- Learner: own progress, own tasks, optional bookings, own scoring feedback.
-- Manager: read-only summary and reports if needed.
+- 管理员：系统设置、导入、用户、报表、全部学员。
+- 培训师 / 导师：负责学员、跟进、评分、辅导。
+- 学员：自己的进度、任务、可选预约、可选评分反馈。
+- 经理：团队汇总和风险，通常只读。
+- 外部合作方：只看自己组织或项目范围。
 
-Record which pages and API actions each role can access. Avoid adding roles that do not map to real workflows.
+必须记录每个角色能访问哪些页面和 API 动作。不要添加没有真实工作流的角色。
 
-## 3. Learning Structure
+## 3. 学习结构
 
-Identify whether the project is:
+判断项目类型：
 
-- Stage/task based: phases, modules, lessons, checklists.
-- Milestone based: key deliverables and due dates.
-- Cohort based: fixed calendar schedule.
-- Freeform: manual progress notes and status.
+- 阶段 / 任务型：阶段、模块、课程、清单。
+- 里程碑型：关键交付物和截止日期。
+- 批次日历型：固定日程。
+- 自由进度型：人工备注和状态。
 
-For stage/task projects, collect stage name, type, duration, order, task names, task type, expected day or date, and pass/fail meaning.
+阶段 / 任务型至少收集：
 
-## 4. Data Sources
+- 阶段名称、顺序、持续天数。
+- 任务名称、任务类型、截止规则。
+- 完成、逾期、未通过、高风险的含义。
 
-Classify every data source:
+## 4. 数据来源
 
-- Excel or CSV export.
-- Platform API.
-- Manual admin entry.
-- Existing database.
-- Mixed source.
+每个数据源都要分类：
 
-For spreadsheet imports, inspect sheets and headers before designing code. Capture:
+- Excel / CSV 导出。
+- 平台 API。
+- 手工录入。
+- 已有数据库。
+- 混合来源。
 
-- File purpose.
-- Sheet names.
-- Header row.
-- Required columns.
-- Unique learner key.
-- Date formats.
-- Status values and their normalized meaning.
-- Whether imports replace, merge, or append data.
+表格导入必须先检查：
 
-Do not reuse another project's file names or column names unless the user confirms the same platform/export format.
+- 文件用途。
+- sheet 名。
+- 表头行。
+- 必填字段。
+- 唯一学员键。
+- 日期格式。
+- 状态值和标准化含义。
+- 导入是替换、合并还是追加。
 
-## 5. Operational Modules
+不要复用其他项目的文件名、字段名或状态值，除非用户确认来源格式完全一致。
 
-Select only the modules the project needs:
+## 5. 运营模块
 
-- Dashboard: summary metrics, risk segments, action queue.
-- Import: preview, validation, import logs, data freshness.
-- Course structure: stages and tasks.
-- Task board: learner-by-task status and manual override.
-- Learner detail: roadmap, calendar, follow-ups, notes.
-- Follow-ups: owners, due dates, open/closed status.
-- Reports: weekly or monthly operational readout.
-- Notifications: in-app, email, or both.
-- Practice booking: slots, bookings, meeting links.
-- Scoring: rubrics, scoring items, pass/fail, learner reflection.
-- Trends: score or progress analytics over time.
+只选择项目真正需要的模块：
 
-If optional modules are omitted, remove their navigation, schema, APIs, and notification flows.
+- 首页看板：指标、风险、待办。
+- 导入：预览、校验、日志、数据新鲜度。
+- 课程结构：阶段、任务、顺序。
+- 任务看板：学员任务完成状态和手工覆盖。
+- 学员详情：路线、日历、跟进、备注。
+- 跟进事项：负责人、截止日期、打开/关闭。
+- 报表：周报、月报、行动清单。
+- 通知：站内、邮件或两者。
+- 预约：时间段、预约、会议链接。
+- 评分：量表、分数、通过/未通过、反馈。
+- 趋势：进度或成绩变化。
 
-## 6. Risk Rules
+如果省略可选模块，必须同时移除对应导航、数据表、API 和通知流程。
 
-Define risk rules in plain language before implementation:
+## 6. 风险规则
 
-- overdue tasks
-- due today
-- inactivity
-- deadline approaching
-- failed assessment
-- missing score
-- manual high-risk flag
+先用自然语言定义风险，再写代码：
 
-For each rule, define threshold, source fields, display label, and severity.
+- 逾期任务。
+- 今日到期。
+- 长时间未学习。
+- 截止日期临近。
+- 考核未通过。
+- 缺少评分。
+- 管理员手工标记高风险。
 
-## 7. Reporting And Notifications
+每条规则要定义阈值、来源字段、展示标签和严重程度。
 
-Decide:
+## 7. 报表和通知
 
-- Report cadence and audience.
-- Whether reports are generated in-app, exported, emailed, or all three.
-- Notification triggers and target roles.
-- Whether links must use public URLs.
-- Whether test-recipient mode is required.
+确认：
 
-## 8. Deployment And Operations
+- 报表频率和读者。
+- 报表是在页面生成、导出、邮件发送，还是三者都有。
+- 通知触发条件和接收角色。
+- 链接是否必须使用公网地址。
+- 是否需要测试收件人模式。
 
-Capture:
+## 8. 部署和维护
 
-- Hosting target.
-- Database choice.
-- Environment variable needs.
-- Backup expectations.
-- Admin bootstrap process.
-- Handoff memory rules in the target repo.
+确认：
 
-Before finalizing, restate assumptions and get user confirmation when any assumption could change schema, imports, permissions, or workflow.
+- 托管平台。
+- 数据库选择。
+- 环境变量。
+- 备份要求。
+- 初始管理员账号如何创建。
+- 目标仓库是否有 handoff / memory 规则。
+
+最终计划前，必须列出假设。任何会影响数据结构、导入、权限或工作流的假设，都要让用户确认。

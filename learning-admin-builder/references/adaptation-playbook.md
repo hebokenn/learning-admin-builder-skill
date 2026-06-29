@@ -1,121 +1,156 @@
-# Adaptation Playbook
+# 适配执行手册
 
-Use this playbook after requirements intake and before implementation.
+完成需求澄清后、开始实施前，按这个手册把新学习项目映射成网站。
 
-## 1. Classify The Build
+## 1. 判断建设类型
 
-Choose one path:
+选择一种路径：
 
-- New app from scratch: create a compact admin app using the user's preferred stack or the repo's established stack.
-- Existing app adaptation: preserve framework, routing, styling, auth, database, and component patterns unless they block the goal.
-- MyCoach-derived pattern: reuse the product architecture and workflow ideas, not private code or private data.
+- 从零新建：使用用户偏好的技术栈，或推荐简单可维护的后台应用。
+- 改造已有项目：保留现有框架、路由、样式、认证、数据库和组件习惯。
+- 复用旧经验：只复用产品架构和工作流思想，不复制私有代码或私有数据。
 
-## 2. Define The V1 Module Set
+## 2. 定义第一版模块
 
-Create a module list with one of these states:
+给每个模块标记：
 
-- required
-- optional in v1
-- explicitly out of scope
+- 第一版必做。
+- 第一版可选。
+- 明确不做。
 
-Do this for dashboard, imports, learning structure, task board, learner detail, follow-ups, reports, notifications, booking, scoring, and analytics.
+模块包括：
 
-Every enabled module must have:
+- 首页看板。
+- 数据导入。
+- 学习结构。
+- 任务 / 进度看板。
+- 学员详情。
+- 跟进事项。
+- 报表。
+- 通知。
+- 预约。
+- 评分。
+- 证书。
+- 趋势分析。
+- 后台设置。
 
-- page or view
-- API or data access path
-- required tables or data source
-- role permissions
-- acceptance criteria
+每个启用模块都必须有：
 
-## 3. Map Data Model
+- 页面或视图。
+- API 或数据访问路径。
+- 数据表或数据来源。
+- 角色权限。
+- 验收标准。
 
-Start from the target domain, not from an old schema. Common entities:
+## 3. 映射数据模型
+
+从新项目业务出发，不从旧 schema 出发。常见实体：
 
 - user
 - learner
 - role
-- cohort or project
-- stage or module
-- task or milestone
-- progress record
-- manual override
-- follow-up
-- import log
-- report run
+- program
+- cohort
+- stage
+- task
+- progress
+- manual_override
+- follow_up
+- import_job
+- import_error
+- report_run
 - notification
 - optional booking
-- optional rubric and score
+- optional rubric
+- optional score
+- optional certification
 
-Define unique keys and relationships before coding. Use email only when the user confirms it is stable and allowed.
+先定义唯一键和关系，再写代码。只有用户确认稳定且允许使用时，才把邮箱当唯一键。
 
-## 4. Design Imports
+## 4. 设计导入
 
-For each import file or API:
+对每个导入文件或 API，定义：
 
-- inspect sample shape
-- define source type
-- define required fields
-- define normalization rules
-- define insert, update, delete, and conflict behavior
-- define preview output
-- define import log fields
-- define rollback or recovery expectation if needed
+- 来源类型。
+- 样例结构。
+- 必填字段。
+- 字段映射。
+- 状态标准化规则。
+- 新增、更新、删除、冲突规则。
+- 预览输出。
+- 导入日志字段。
+- 回滚或恢复预期。
 
-If sample files are unavailable, implement manual entry or seed data only if the user agrees.
+没有样例文件时，只能先做手工录入、假数据或字段占位，不能编造真实导入规则。
 
-## 5. Design Navigation
+## 5. 设计导航
 
-Default admin navigation:
+默认管理员导航：
 
-- Dashboard
-- Structure
-- Tasks or Progress
-- Learners or Status
-- Reports
-- Import
-- Admin or Settings
+- 总览。
+- 学员。
+- 课程 / 阶段。
+- 任务 / 进度。
+- 跟进。
+- 导入。
+- 报表。
+- 设置。
 
-Default learner navigation:
+默认学员导航：
 
-- My Progress
-- Optional Booking
-- Optional Scores
-- Settings
+- 我的进度。
+- 可选预约。
+- 可选成绩。
+- 设置。
 
-Remove pages that do not exist. Keep labels short and domain-specific.
+没有实现的页面不要出现在导航里。导航标签要短，并使用新项目业务语言。
 
-## 6. Implement Safely
+## 6. 安全实施
 
-Before editing an existing repo:
+改造已有仓库前：
 
-- read project handoff docs and agent instructions
-- inspect git status
-- inspect package, framework, routing, and styling conventions
-- for Next.js projects with local version-specific docs, read the relevant local docs before coding
+- 阅读项目交接文件和 AI 指令。
+- 检查当前 git 状态。
+- 检查框架、路由、样式、运行命令。
+- Next.js 项目如有版本特定文档，先读对应文档。
 
-Then implement in thin vertical slices:
+按薄切片实施：
 
-- schema and seed/config
-- data access and APIs
-- page shell and navigation
-- core dashboard or list view
-- import or manual data entry
-- detail workflows
-- optional modules
+1. schema、seed、配置。
+2. 数据访问和 API。
+3. 页面框架和导航。
+4. 首页看板或列表页。
+5. 导入或手工录入。
+6. 详情和跟进流程。
+7. 权限和后台设置。
+8. 可选模块。
 
-Avoid broad refactors unless required.
+避免无关大重构。
 
-## 7. Acceptance Criteria
+## 7. 后台管理补充
 
-At minimum, a new learning admin site should allow the intended operator to:
+第一版也要考虑：
 
-- log in with the right role
-- view current learner status
-- understand who needs action today
-- inspect one learner's progress
-- update or import progress
-- record follow-up or next action
-- see whether data is fresh
+- 初始管理员账号。
+- 用户禁用和重置密码。
+- 角色权限。
+- 导入日志和错误行。
+- 操作审计。
+- 导出权限。
+- 备份和恢复说明。
+- 健康检查。
 
-Add module-specific acceptance criteria for reports, notifications, booking, and scoring.
+## 8. 最低验收标准
+
+一个学习后台至少要让操作者能：
+
+- 用正确角色登录。
+- 查看当前学员状态。
+- 知道今天谁需要处理。
+- 查看单个学员完整进度。
+- 更新或导入进度。
+- 记录跟进或下一步动作。
+- 判断数据是否新鲜。
+- 管理用户、角色和基础配置。
+
+报表、通知、预约、评分、证书等模块启用时，分别补充验收标准。

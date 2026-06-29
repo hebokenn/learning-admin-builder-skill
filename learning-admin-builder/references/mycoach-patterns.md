@@ -1,108 +1,116 @@
-# MyCoach-Style Patterns
+# 通用培训后台模式
 
-Use these as generalized product patterns. Do not copy private source code, project data, credentials, exports, or production details from any existing MyCoach installation.
+这里记录的是可迁移的产品模式，不是任何私有项目源码、数据、凭据、导出或生产细节。
 
-## Product Shape
+## 产品形态
 
-Build a dense learning-operations admin system:
+做一个密集的学习运营后台：
 
-- Top-level navigation by daily workflow.
-- Role-aware pages and actions.
-- Compact metrics above operational tables.
-- Fast filtering, searching, and sorting.
-- Learner detail pages that combine progress, risk, notes, and follow-up actions.
-- Data freshness indicators when imports or syncs drive the app.
+- 顶层导航按日常工作流组织。
+- 页面和操作按角色控制。
+- 指标卡放在运营表格上方。
+- 筛选、搜索、排序要稳定。
+- 学员详情整合进度、风险、备注、跟进动作。
+- 如果依赖导入或同步，页面要显示数据新鲜度。
 
-Avoid marketing-page structure, oversized hero sections, decorative card layouts, and explanatory in-app text.
+避免：
 
-## Core Module Pattern
+- 营销页结构。
+- 大 hero 和宣传口号。
+- 装饰性卡片堆砌。
+- 无业务意义的插画和渐变。
+- 页面上用大段文字解释系统功能。
 
-Common v1 modules:
+## 核心模块模式
 
-- Authentication and role-based access.
-- Data dashboard for aggregate health and risk.
-- Import page for spreadsheet or platform data.
-- Learning structure page for stages, tasks, or milestones.
-- Task board for per-learner completion state.
-- Learner status page for segmentation.
-- Learner detail page for roadmap, timeline, follow-ups, and manual operations.
-- Report page for weekly or monthly action review.
-- Settings or admin page for users and configuration.
+常见第一版模块：
 
-Optional modules:
+- 登录和角色权限。
+- 首页看板：整体健康度和风险。
+- 导入页：表格或平台数据导入。
+- 学习结构页：阶段、任务、里程碑。
+- 任务看板：逐学员任务状态。
+- 学员列表：筛选、批量操作、风险定位。
+- 学员详情：路线、时间线、跟进、人工操作。
+- 报表页：周报或月度行动复盘。
+- 设置页：用户、角色、状态、通知、导入模板。
 
-- Practice booking.
-- Coach or mentor availability.
-- Rubric scoring.
-- Learner reflections.
-- In-app and email notifications.
-- Trend analytics.
+可选模块：
 
-## UI Pattern
+- 预约。
+- 导师或教练可用时间。
+- 评分量表。
+- 学员反馈或反思。
+- 站内和邮件通知。
+- 趋势分析。
+- 证书和复训提醒。
 
-Use a restrained operational dashboard:
+## UI 模式
 
-- Compact page header with title, short description, and actions.
-- Metric cards for a small number of decision-driving numbers.
-- Panels for tables, charts, and queues.
-- Tables as the default for repeated operational work.
-- Charts only when they support a decision.
-- Stable widths for navigation, filters, date cells, action buttons, and status chips.
-- Responsive behavior that preserves task completion and scanning on small screens.
+使用克制的后台工具界面：
 
-Use clear labels from the target project domain. Do not leave MyCoach-specific labels in a different project unless the new project uses that name.
+- 紧凑页面标题、简短说明和主要操作。
+- 指标卡只放少数决策数字。
+- 表格、队列、图表分区清楚。
+- 表格是重复运营工作的默认载体。
+- 图表只在支持判断时使用。
+- 导航、筛选、日期、状态标签、操作按钮宽度稳定。
+- 小屏幕保留可完成任务的能力，不能让文字重叠。
 
-## Data And State Pattern
+文案必须替换成新项目自己的领域语言，不要遗留其他项目名称或专有词。
 
-Use durable state for:
+## 数据和状态模式
 
-- learners
-- stages, tasks, milestones
-- task progress
-- manual overrides
-- follow-ups
-- scoring
-- bookings
-- notification records
-- import logs
-- report send history
+这些数据应持久化：
 
-Use transient browser state only for UI filters, selected tabs, and modal visibility.
+- 学员。
+- 阶段、任务、里程碑。
+- 任务进度。
+- 手工覆盖。
+- 跟进事项。
+- 评分。
+- 预约。
+- 通知记录。
+- 导入日志。
+- 报表发送历史。
+- 操作审计。
 
-## Import Pattern
+浏览器临时状态只用于筛选、选中 tab、弹窗开关等 UI 状态。
 
-Design imports as a first-class workflow:
+## 导入模式
 
-- Detect file type from explicit user-selected slot, stable file naming, or inspected headers.
-- Preview changes before applying when risk is high.
-- Normalize status values.
-- Keep import logs.
-- Record data freshness.
-- Block or surface identity conflicts.
-- Avoid silently overwriting manual learner records unless the behavior is agreed.
+导入是核心工作流：
 
-## Optional Practice And Scoring Pattern
+- 通过用户选择、稳定文件名或表头识别数据类型。
+- 高风险写入前必须预览。
+- 标准化状态值。
+- 保留导入日志。
+- 记录数据新鲜度。
+- 阻止或明确提示身份冲突。
+- 不要无声覆盖人工修改，除非用户确认规则。
 
-Only add these if required:
+## 预约和评分模式
 
-- Coaches or mentors open slots or initiate sessions.
-- Learners book available slots when allowed.
-- Booking records hold learner, coach, date, time, meeting link, type, purpose, and status.
-- Scoring records reference a booking or assessment.
-- Rubrics define dimensions, weights, item labels, score type, and pass threshold.
-- Learners can review feedback and optionally submit reflection or improvement plans.
+只有用户确认需要时才添加：
 
-Keep scoring math explicit and project-specific. Do not reuse another project's rubric weights by default.
+- 导师创建时间段或发起会话。
+- 学员在允许范围内预约。
+- 预约记录包含学员、导师、日期、时间、会议链接、类型、目的、状态。
+- 评分记录引用预约或考核。
+- 评分量表定义维度、权重、题项、分数类型、通过线。
+- 学员可以查看反馈，必要时提交反思或改进计划。
 
-## Reports And Notifications Pattern
+评分公式必须按新项目确认，不复用其他项目的权重。
 
-Reports should produce actions, not just metrics:
+## 报表和通知模式
 
-- owner
-- due date
-- risk reason
-- next action
-- unresolved blockers
-- recently closed items
+报表要产生行动，不只是数字：
 
-Notifications should have clear trigger, recipient, channel, link target, and deduplication rule.
+- 负责人。
+- 截止日期。
+- 风险原因。
+- 下一步动作。
+- 未解决阻塞。
+- 最近关闭事项。
+
+通知必须有清晰的触发条件、接收人、渠道、跳转链接和去重规则。

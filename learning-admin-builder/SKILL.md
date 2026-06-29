@@ -1,56 +1,64 @@
 ---
 name: learning-admin-builder
-description: Build or adapt dense learning-project admin websites inspired by MyCoach-style operations dashboards. Use when a user wants to turn a training, course, onboarding, certification, coaching, or learning-progress project into a managed web app with roles, learner records, stages, tasks, Excel or platform imports, progress dashboards, risk tracking, follow-ups, reports, notifications, and optional practice booking or scoring workflows.
+description: 当用户想把学习、培训、入职、认证、带教、课程进度项目做成后台管理网站时使用。Build or adapt dense learning-project admin websites with roles, learner records, stages, tasks, Excel/CSV or platform imports, progress dashboards, risk tracking, follow-ups, reports, notifications, and optional booking or scoring workflows.
 ---
 
 # Learning Admin Builder
 
-## Overview
+## 使用目标
 
-Use this skill to create or adapt operational admin websites for learning projects. The skill does not provide a one-click clone of any existing system; it gives a repeatable discovery, design, implementation, and validation workflow.
+用这个 skill 帮用户把学习项目做成可长期使用的后台管理网站。它不是一键复制某个已有系统，也不包含私有源码或数据；它提供需求澄清、页面设计、数据建模、导入、API、部署、后台维护和验收流程。
 
-Default to a dense, restrained admin-dashboard product: fast scanning, compact tables, stable filters, role-specific navigation, clear operational queues, and practical reports. Do not create a marketing landing page unless the user explicitly asks for one.
+默认产品方向：信息密集、克制、可扫描的后台工具。优先支持管理员每天重复处理进度、风险、导入、跟进和报表。不要做营销落地页，除非用户明确要求。
 
-## Workflow
+## AI 执行流程
 
-1. Inspect the target repository or project brief before asking questions when local files are available.
-2. Read `references/requirements-intake.md` and run the intake before implementing. If the user only wants a plan, stop after a decision-complete plan.
-3. Read `references/mycoach-patterns.md` when choosing module architecture, UI density, navigation, and optional workflow patterns.
-4. Read `references/adaptation-playbook.md` before mapping data sources, database schema, imports, pages, APIs, or optional modules.
-5. Read `references/validation-checklist.md` before final verification and public handoff.
+1. 如果目标项目有文件，先检查项目说明、交接规则、代码结构、样例表格和当前改动，再问问题。
+2. 实施前读取 `references/requirements-intake.md`，先完成需求澄清。用户只要方案时，停在可决策计划，不写代码。
+3. 设计模块、页面、导航、UI 密度和后台管理时，读取 `references/mycoach-patterns.md`。
+4. 映射数据源、数据库、导入、API、脚本和可选模块前，读取 `references/adaptation-playbook.md`。
+5. 交付前读取 `references/validation-checklist.md`，完成验证、安全检查和交接。
 
-## Intake Rules
+## 必须先确认的内容
 
-Always identify these items before writing code:
+写代码前必须确认：
 
-- Project goal and audience.
-- Roles and permission boundaries.
-- Learner identity fields and any privacy constraints.
-- Learning structure: stages, tasks, milestones, deadlines, or freeform progress.
-- Data source: Excel exports, platform API, manual entry, database, or mixed source.
-- Required modules: dashboard, import, course structure, task board, learner detail, follow-ups, reports, notifications, practice booking, scoring, analytics.
-- Deployment target and operational owner.
+- 项目目标和成功标准。
+- 使用角色和权限边界。
+- 学员唯一标识和隐私限制。
+- 学习结构：阶段、任务、里程碑、截止日期、批次或自由进度。
+- 数据来源：Excel、CSV、平台 API、手工录入、已有数据库或混合来源。
+- 第一版必需模块：看板、导入、课程结构、任务、学员详情、跟进、报表、后台设置。
+- 可选模块：通知、预约、评分、证书、自动周报、趋势分析。
+- 部署目标和日常维护负责人。
 
-Ask only for decisions that cannot be discovered from the repo, files, or sample data. When sample Excel or CSV files exist, inspect their sheets and headers before proposing import logic.
+只问无法从项目文件、说明或样例数据中发现的决策。存在 Excel / CSV 样例时，先检查 sheet、表头、样例行和唯一键，再设计导入逻辑。
 
-## Implementation Defaults
+## 默认实现原则
 
-- Prefer building a working admin tool over a broad framework abstraction.
-- Keep optional modules removable. Practice booking, scoring, notifications, and weekly reports must not be assumed for every project.
-- Treat import parsing as project-specific. Never hard-code another project's file names, stages, columns, scoring rules, or organization vocabulary unless the user confirms they apply.
-- Use durable database state for operational records such as follow-ups, scoring, reports, notifications, and manual overrides.
-- Keep user-facing labels aligned to the new project domain while preserving the operational layout pattern.
-- Preserve existing project conventions, framework, and design system when adapting an existing codebase.
+- 先做能跑通业务闭环的后台工具，不先抽象大框架。
+- 可选模块必须可移除；不要默认每个项目都有预约、评分、通知、周报。
+- 导入解析必须按新项目字段设计，不硬编码其他项目的文件名、阶段、字段或评分规则。
+- 跟进、评分、报表、通知、手工覆盖、导入日志等运营记录必须持久化。
+- UI 文案使用新项目自己的业务语言，但保留后台工具的密集、克制、可扫描结构。
+- 改造已有项目时，遵守已有框架、路由、样式、认证、数据库和组件习惯。
+- 如果目标项目有 handoff / memory 规则，完成实质工作后更新目标项目要求的交接文件。
 
-## Output Expectations
+## 输出要求
 
-For planning work, produce a decision-complete implementation plan with module choices, data model, import mapping, pages, APIs, validations, and assumptions.
+用户要方案时，输出可决策计划，至少包括：
 
-For implementation work, deliver the code changes, run relevant checks, and summarize:
+- 项目理解和待确认问题。
+- 第一版模块和延期模块。
+- 页面清单、数据模型、字段映射。
+- 权限、导入、API、脚本。
+- UI 方向、后台维护、部署和验收。
 
-- what changed
-- files touched at a high level
-- validation run
-- remaining setup or data assumptions
+用户要实施时，交付代码改动并运行相关检查，最后说明：
 
-Never include secrets, real learner data, private exports, database files, or production deployment credentials in public artifacts.
+- 改了什么。
+- 涉及哪些模块或文件。
+- 运行了哪些验证。
+- 还剩哪些配置或数据假设。
+
+公开产物里绝不能包含密钥、真实学员数据、私有导出、数据库文件或生产部署凭据。

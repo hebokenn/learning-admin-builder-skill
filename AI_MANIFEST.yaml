@@ -1,0 +1,82 @@
+name: learning-admin-builder-skill
+language: zh-CN
+purpose: "帮助 AI 和非技术用户把学习、培训、认证、带教项目做成后台管理网站。"
+primary_entrypoints:
+  human: README.md
+  ai: AI_CONTEXT.md
+  codex_skill: learning-admin-builder/SKILL.md
+  portable_prompt: portable-prompt.md
+  workbuddy_kun: WORKBUDDY_KUN_USAGE.md
+rules:
+  - "先做需求澄清，再写代码。"
+  - "先检查目标项目已有资料和样例数据，再问用户。"
+  - "后台管理工具优先，不做营销首页。"
+  - "导入数据前必须设计字段映射、预览、校验、冲突和日志。"
+  - "预约、评分、通知、周报、证书都是可选模块。"
+  - "公开仓库不得包含真实学员数据、密钥、数据库、私有导出或生产配置。"
+documents:
+  overview:
+    - path: docs/00-先读我.md
+      use_when: "用户需要理解整体路线。"
+    - path: docs/01-从业务到网站方法论.md
+      use_when: "用户需要从业务流程映射到网站结构。"
+  intake:
+    - path: docs/03-需求收集与AI提示词.md
+      use_when: "开始新项目或需求不清晰。"
+    - path: templates/需求收集表.md
+      use_when: "需要用户填空式提供信息。"
+  design:
+    - path: docs/04-页面与UI设计.md
+      use_when: "设计后台页面、组件、视觉方向。"
+    - path: docs/examples/页面草图样例.md
+      use_when: "需要文字草图或页面结构样例。"
+    - path: templates/页面确认清单.md
+      use_when: "确认每个页面是否可实现、可验收。"
+  data:
+    - path: docs/05-数据模型与字段映射.md
+      use_when: "设计数据库、Excel/CSV 字段映射和导入规则。"
+    - path: templates/数据字段清单.md
+      use_when: "整理字段、必填、唯一键、校验规则。"
+  build:
+    - path: docs/06-架构与代码组织.md
+      use_when: "设计前后端、目录、权限、服务层。"
+    - path: templates/权限矩阵.md
+      use_when: "把角色、页面、按钮、API、导出和敏感字段权限整理成表。"
+    - path: docs/07-API与自动化脚本.md
+      use_when: "设计 API、导入、提醒、周报、备份脚本。"
+    - path: templates/API与脚本清单.md
+      use_when: "整理页面动作、API、脚本、权限、输入输出和验收。"
+  validation:
+    - path: docs/08-本地运行与验证.md
+      use_when: "本地启动、页面验收、响应式检查。"
+  deploy:
+    - path: docs/09-部署上线与服务器.md
+      use_when: "选择 Vercel、Render、VPS、数据库和备份方案。"
+    - path: templates/部署检查清单.md
+      use_when: "上线前逐项检查。"
+  operations:
+    - path: docs/10-后台管理与日常维护.md
+      use_when: "设计用户、角色、日志、备份、日常维护。"
+    - path: templates/维护记录模板.md
+      use_when: "记录上线后维护动作。"
+  examples:
+    - path: docs/11-案例-新员工培训和3PP培训.md
+      use_when: "用户需要可迁移案例。"
+    - path: docs/examples/AI提示词合集.md
+      use_when: "需要直接复制给 AI 的提示词。"
+ai_output_contract:
+  planning:
+    - "项目目标和用户角色"
+    - "待确认问题"
+    - "第一版模块和延期模块"
+    - "页面清单"
+    - "数据表和字段映射"
+    - "权限规则"
+    - "导入/API/脚本设计"
+    - "验收和部署计划"
+  implementation:
+    - "遵守目标仓库规则"
+    - "分阶段改动"
+    - "运行目标仓库验证"
+    - "更新目标仓库交接记录"
+    - "总结变更、验证和剩余假设"

@@ -1,4 +1,4 @@
 interface:
   display_name: "Learning Admin Builder"
-  short_description: "Build reusable learning-project admin sites"
-  default_prompt: "Use $learning-admin-builder to turn my learning project into a MyCoach-style admin site."
+  short_description: "把学习项目做成后台管理网站"
+  default_prompt: "Use $learning-admin-builder to turn my learning project into a training progress admin site. 请先做需求澄清，再给出页面、数据、权限、导入和部署方案。"

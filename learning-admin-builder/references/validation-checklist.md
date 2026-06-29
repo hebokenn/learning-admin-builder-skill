@@ -1,47 +1,47 @@
-# Validation Checklist
+# 验证清单
 
-Run this checklist before final handoff.
+交付前必须检查。
 
-## Skill Or Public Artifact Safety
+## 公开仓库安全
 
-For public skill repositories:
+公开 skill 或方法论仓库不能包含：
 
-- No `.env` files.
-- No database files.
-- No private exports or uploaded spreadsheets.
-- No real learner names, emails, phone numbers, meeting links, or company-only records.
-- No production server addresses, SSH remotes, tokens, SMTP credentials, cookies, or API keys.
-- No copied private application source unless the user explicitly wants to publish that code.
-- No generated build artifacts or dependency folders.
+- `.env` 文件。
+- 数据库文件。
+- 私有导出或上传表格。
+- 真实学员姓名、邮箱、手机号、会议链接、公司内部记录。
+- 生产服务器地址、SSH 连接、token、SMTP 密钥、cookie、API key。
+- 私有应用源码，除非用户明确要求发布该源码。
+- 构建产物、依赖目录、临时缓存。
 
-Use repository scans such as `find`, `git status`, and targeted text search for secret-like strings before pushing.
+推送前用文件查找、git 状态和关键词搜索检查。
 
-## App Validation
+## 应用验证
 
-Use the target repo's own commands. Typical checks:
+使用目标仓库自己的命令。常见检查：
 
-- format or diff check when available
-- lint
-- typecheck
-- build
-- unit or integration tests when available
+- 格式或 diff 检查。
+- lint。
+- typecheck。
+- build。
+- 单元或集成测试。
 
-For web apps, run a local server and inspect key pages in a real browser when feasible.
+Web 应用可行时，要启动本地服务并用真实浏览器检查关键页面。
 
-## Browser QA
+## 浏览器 QA
 
-Check representative pages:
+检查页面：
 
-- dashboard
-- import or data entry
-- learning structure
-- task or progress board
-- learner detail
-- reports
-- optional booking/scoring pages
-- settings or admin
+- 首页看板。
+- 导入或数据录入。
+- 学习结构。
+- 任务 / 进度看板。
+- 学员详情。
+- 报表。
+- 可选预约 / 评分页。
+- 设置 / 后台管理。
 
-Check viewport widths:
+检查宽度：
 
 - 1280
 - 1100
@@ -49,38 +49,50 @@ Check viewport widths:
 - 760
 - 560
 
-Look for:
+观察：
 
-- horizontal overflow
-- clipped buttons
-- overlapping text
-- unstable table or card layouts
-- unreadable charts
-- modals that do not fit
-- broken role-based redirects
+- 横向溢出。
+- 按钮被裁切。
+- 文字重叠。
+- 表格或卡片布局跳动。
+- 图表不可读。
+- 弹窗超出屏幕。
+- 角色跳转错误。
 
-## Data QA
+## 数据 QA
 
-Validate with representative data:
+至少验证这些数据场景：
 
-- empty state
-- one learner
-- many learners
-- completed learner
-- overdue learner
-- learner with manual override
-- import conflict
-- unknown status value
-- optional booking or scoring records when enabled
+- 空状态。
+- 一个学员。
+- 多个学员。
+- 已完成学员。
+- 逾期学员。
+- 手工覆盖学员。
+- 导入冲突。
+- 未知状态值。
+- 启用预约或评分时的相关记录。
 
-## Handoff
+## 后台管理 QA
 
-If the target repo has a handoff file or agent instructions, update it after substantive work. Record:
+检查：
 
-- what changed
-- files touched
-- why the approach was chosen
-- validation run
-- known follow-ups
+- 用户能创建、禁用、改角色。
+- 无权限用户看不到按钮，直接访问 API 也被拦截。
+- 关键操作有日志。
+- 导入有预览、错误行和日志。
+- 导出有权限和记录。
+- 通知有发送记录和失败处理。
+- 备份和恢复说明存在。
 
-Do not create a second persistent memory location when the target repo already defines one.
+## 交接
+
+如果目标仓库有 handoff 文件或 AI 记忆规则，完成实质工作后更新它。记录：
+
+- 改了什么。
+- 涉及哪些文件或模块。
+- 为什么这样做。
+- 运行了哪些验证。
+- 已知后续事项。
+
+不要在目标项目已有记忆规则之外再创建第二套长期记忆。
