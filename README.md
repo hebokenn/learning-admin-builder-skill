@@ -4,7 +4,7 @@ Reusable Codex skill for turning learning, training, onboarding, certification, 
 
 This repository contains only the skill instructions and generalized reference material. It does not include private MyCoach application source code, databases, exports, credentials, or learner data.
 
-## Install
+## Install For Codex
 
 Clone the repository:
 
@@ -20,6 +20,27 @@ cp -R learning-admin-builder-skill/learning-admin-builder ~/.codex/skills/
 ```
 
 Restart Codex so the new skill is discovered.
+
+## Install For WorkBuddy Or Project-Level Skill Loaders
+
+If the tool supports project-level skills with a `SKILL.md` entry point, copy the skill folder into that tool's project skill directory. For WorkBuddy-style project skills:
+
+```bash
+mkdir -p .workbuddy/skills
+cp -R /path/to/learning-admin-builder-skill/learning-admin-builder .workbuddy/skills/
+```
+
+Then invoke the skill by name in the target project:
+
+```text
+Use $learning-admin-builder to turn this learning project into a MyCoach-style admin site.
+```
+
+See [WORKBUDDY_KUN_USAGE.md](./WORKBUDDY_KUN_USAGE.md) for details.
+
+## Use With Kun Or Prompt-Only Tools
+
+If the tool does not load `SKILL.md` folders directly, use [portable-prompt.md](./portable-prompt.md). Put it in the tool's project rules, knowledge base, custom instruction area, or paste it at the start of the task.
 
 ## Use
 
