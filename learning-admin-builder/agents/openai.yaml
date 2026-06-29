@@ -1,0 +1,4 @@
+interface:
+  display_name: "Learning Admin Builder"
+  short_description: "Build reusable learning-project admin sites"
+  default_prompt: "Use $learning-admin-builder to turn my learning project into a MyCoach-style admin site."
