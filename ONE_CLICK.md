@@ -1,10 +1,10 @@
-# 一键补水
+# 快速启动
 
-这份文件给同事最省事地使用。目标是：不用读完整仓库，直接把上下文补给 WorkBuddy、Kun、Cursor、ChatGPT Agent、Codex 或其他 AI 工具。
+这份文件给用户快速启动任意 AI agent。目标是：不用读完整仓库，先把 GitHub 项目链接交给 agent，让 agent 自动读取方法论并开始下一步。
 
 ## 最简单做法
 
-如果 AI 工具能打开 GitHub 链接，把这段作为第一条消息：
+复制下面这段给你的 agent：
 
 ```text
 请先读取这个公开方法论仓库：
@@ -28,9 +28,9 @@ https://github.com/hebokenn/learning-admin-builder-skill
 - 不要暴露真实学员数据、.env、数据库、私有导出、账号密码或生产配置。
 ```
 
-如果 AI 工具不能打开 GitHub 链接，再使用下面的一条命令复制补水包。
+如果 agent 不能打开 GitHub 链接，再使用下面的方式生成可粘贴的上下文包。
 
-## 一条命令复制补水包
+## 生成可粘贴上下文包
 
 在本仓库目录运行：
 
@@ -38,7 +38,7 @@ https://github.com/hebokenn/learning-admin-builder-skill
 python3 scripts/one_click_context.py --copy
 ```
 
-它会把精简后的 AI 上下文复制到剪贴板。然后你直接粘贴到任意 AI 工具里。
+它会把精简后的 AI 上下文复制到剪贴板。然后直接粘贴到任意 AI 工具里。
 
 如果不想复制到剪贴板，只想生成文件：
 

@@ -46,7 +46,7 @@
 
 | 场景 | 优先读取 |
 |---|---|
-| 要一键补水或最少操作 | `ONE_CLICK.md` |
+| 要快速启动或最少操作 | `ONE_CLICK.md` |
 | 用户第一次描述项目 | `docs/03-需求收集与AI提示词.md`、`templates/需求收集表.md` |
 | 要整体方法论 | `docs/00-先读我.md`、`docs/01-从业务到网站方法论.md` |
 | 要设计页面和 UI | `docs/04-页面与UI设计.md`、`templates/页面确认清单.md`、`docs/examples/页面草图样例.md` |

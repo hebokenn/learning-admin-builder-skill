@@ -4,19 +4,19 @@
 
 这个仓库不是 MyCoach 管理网站源码，也不包含任何私密数据、数据库、账号密码、部署配置或学员资料。它沉淀的是一套可迁移的方法：如何准备资料、让 AI 问需求、设计页面、设计数据表、生成代码、本地运行、部署上线、日常维护。
 
-## 最省事的用法
+## 快速启动
 
 人只需要做三件事：
 
-1. 先把这个 GitHub 仓库链接发给 AI：`https://github.com/hebokenn/learning-admin-builder-skill`。
+1. 复制 [hebokenn/learning-admin-builder-skill](https://github.com/hebokenn/learning-admin-builder-skill) 给你的 agent。
 2. 提供培训项目的基本资料，真实数据要先脱敏。
 3. 在 AI 给出第一版范围、页面、字段、权限和部署方案后确认。
 
 其余能让 AI 做的事情，都交给 AI：读取项目、整理需求、分析表格字段、设计页面和数据表、生成代码、运行检查、整理部署步骤、更新交接记录。
 
-如果 AI 工具不能打开 GitHub 链接，再打开 [ONE_CLICK.md](ONE_CLICK.md)，复制“一键补水”提示词。
+如果 agent 不能读取 GitHub 链接，再打开 [ONE_CLICK.md](ONE_CLICK.md)，复制里面的快速启动提示词。
 
-如果同事会打开终端，也可以在本仓库目录运行：
+备选：如果需要把完整上下文生成成一段可粘贴文本，在本仓库目录运行：
 
 ```bash
 python3 scripts/one_click_context.py --copy
@@ -74,7 +74,7 @@ AI 代理应按这个顺序加载：
 
 ## 可直接复制的材料
 
-- [一键补水](ONE_CLICK.md)
+- [快速启动](ONE_CLICK.md)
 - [AI 提示词合集](docs/examples/AI提示词合集.md)
 - [页面草图样例](docs/examples/页面草图样例.md)
 - [AI 快速上下文](AI_CONTEXT.md)

@@ -2,16 +2,16 @@
 
 这套方法可以给 WorkBuddy、Kun、Cursor、ChatGPT Agent、Codex 或其他 AI 工具使用。关键不是工具名字，而是让 AI 能读到同一套执行规程，并尽量替人完成读取、整理、实现、验证和部署前准备。
 
-## 最推荐：一键补水
+## 最推荐：快速启动
 
-优先把公开仓库链接发给 agent：
+复制公开仓库链接给 agent：
 
 ```text
 请先读取这个公开方法论仓库：
 https://github.com/hebokenn/learning-admin-builder-skill
 ```
 
-如果 agent 不能打开 GitHub 链接，再使用 [ONE_CLICK.md](ONE_CLICK.md)。如果同事能运行命令，在本仓库目录执行：
+如果 agent 不能打开 GitHub 链接，再使用 [ONE_CLICK.md](ONE_CLICK.md)。需要生成可粘贴上下文包时，在本仓库目录执行：
 
 ```bash
 python3 scripts/one_click_context.py --copy

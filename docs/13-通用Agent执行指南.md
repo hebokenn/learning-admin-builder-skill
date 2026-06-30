@@ -27,7 +27,7 @@
 
 ## 通用启动方式
 
-启动话术统一维护在 [ONE_CLICK.md](../ONE_CLICK.md)。需要给任意 AI 工具“补水”时，优先复制那里的提示词；如果同事能运行命令，直接执行：
+启动话术统一维护在 [ONE_CLICK.md](../ONE_CLICK.md)。需要给任意 AI 工具快速启动时，优先复制那里的提示词；需要生成可粘贴上下文包时执行：
 
 ```bash
 python3 scripts/one_click_context.py --copy
