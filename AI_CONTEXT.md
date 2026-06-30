@@ -8,10 +8,14 @@
 
 ## 你应该先做什么
 
-1. 先检查目标项目现有资料：代码仓库、README、AGENTS、handoff、Excel / CSV 样例、业务文档、截图。
+1. 先检查目标项目现有资料：代码仓库、README、AGENTS、handoff、Excel / CSV 样例、业务文档、现有页面。
 2. 如果资料不足，先问需求；每次最多问 5 个关键问题。
 3. 不要一开始写代码。先输出需求、页面、数据、权限、导入、API、脚本、验收计划。
 4. 如果用户明确要求执行，再按目标仓库现有技术栈分阶段实现。
+
+## 人机分工
+
+人只负责业务确认和授权：目标、脱敏样例、第一版范围、账号/费用/部署/生产密钥。AI 负责尽量多的执行：读取文件、分析表格、整理方案、写代码、运行检查、生成部署前清单和交接记录。
 
 ## 不可破坏的原则
 
@@ -51,8 +55,9 @@
 | 要本地验收 | `docs/08-本地运行与验证.md` |
 | 要部署上线 | `docs/09-部署上线与服务器.md`、`templates/部署检查清单.md` |
 | 要后台维护 | `docs/10-后台管理与日常维护.md`、`templates/维护记录模板.md` |
+| 要让通用 agent 代执行 | `docs/13-通用Agent执行指南.md`、`templates/AI执行任务单.md` |
 | 要直接复制提示词 | `docs/examples/AI提示词合集.md`、`portable-prompt.md` |
-| 要用于 Codex skill | `learning-admin-builder/SKILL.md` |
+| 要用于支持 skill 的 agent | `learning-admin-builder/SKILL.md` |
 | 要用于 WorkBuddy / Kun | `WORKBUDDY_KUN_USAGE.md` |
 
 ## 推荐输出格式
@@ -71,6 +76,8 @@
 9. API / 自动化脚本清单
 10. 验收和部署计划
 ```
+
+执行型 agent 还应先填写 `templates/AI执行任务单.md` 和 `templates/AI执行前项目审查清单.md` 的内容摘要，再开始改代码。
 
 当用户让你“开始实现”时，按小步交付：
 

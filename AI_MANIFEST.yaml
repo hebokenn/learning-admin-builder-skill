@@ -4,7 +4,7 @@ purpose: "帮助 AI 和非技术用户把学习、培训、认证、带教项目
 primary_entrypoints:
   human: README.md
   ai: AI_CONTEXT.md
-  codex_skill: learning-admin-builder/SKILL.md
+  agent_skill: learning-admin-builder/SKILL.md
   portable_prompt: portable-prompt.md
   workbuddy_kun: WORKBUDDY_KUN_USAGE.md
 rules:
@@ -14,17 +14,24 @@ rules:
   - "导入数据前必须设计字段映射、预览、校验、冲突和日志。"
   - "预约、评分、通知、周报、证书都是可选模块。"
   - "公开仓库不得包含真实学员数据、密钥、数据库、私有导出或生产配置。"
+  - "能由 AI 执行的读取、整理、代码、检查、部署前准备，应交给 AI；人只确认业务和授权事项。"
 documents:
   overview:
     - path: docs/00-先读我.md
       use_when: "用户需要理解整体路线。"
     - path: docs/01-从业务到网站方法论.md
       use_when: "用户需要从业务流程映射到网站结构。"
+    - path: docs/13-通用Agent执行指南.md
+      use_when: "用户希望 WorkBuddy、Kun、Cursor、ChatGPT Agent 或其他 agent 代执行。"
   intake:
     - path: docs/03-需求收集与AI提示词.md
       use_when: "开始新项目或需求不清晰。"
     - path: templates/需求收集表.md
       use_when: "需要用户填空式提供信息。"
+    - path: templates/AI执行任务单.md
+      use_when: "需要让 AI 先读取项目、少问问题、再分阶段执行。"
+    - path: templates/AI执行前项目审查清单.md
+      use_when: "需要 AI 在改代码前盘点目标项目、命令、风险和第一阶段文件。"
   design:
     - path: docs/04-页面与UI设计.md
       use_when: "设计后台页面、组件、视觉方向。"
@@ -37,6 +44,8 @@ documents:
       use_when: "设计数据库、Excel/CSV 字段映射和导入规则。"
     - path: templates/数据字段清单.md
       use_when: "整理字段、必填、唯一键、校验规则。"
+    - path: templates/表格字段分析报告.md
+      use_when: "让 AI 自动分析 Excel/CSV 样例字段画像和导入风险。"
   build:
     - path: docs/06-架构与代码组织.md
       use_when: "设计前后端、目录、权限、服务层。"
@@ -46,14 +55,22 @@ documents:
       use_when: "设计 API、导入、提醒、周报、备份脚本。"
     - path: templates/API与脚本清单.md
       use_when: "整理页面动作、API、脚本、权限、输入输出和验收。"
+    - path: templates/API规格模板.md
+      use_when: "为每个接口输出 route、service、validator、schema、错误码、审计和测试请求。"
+    - path: templates/自动化脚本运行手册.md
+      use_when: "设计定时脚本、dry-run、cron、日志、重试和验证方式。"
   validation:
     - path: docs/08-本地运行与验证.md
       use_when: "本地启动、页面验收、响应式检查。"
+    - path: templates/本地验证报告.md
+      use_when: "让 AI 记录命令结果、浏览器 QA、API smoke、导入 dry-run 和阻塞问题。"
   deploy:
     - path: docs/09-部署上线与服务器.md
       use_when: "选择 Vercel、Render、VPS、数据库和备份方案。"
     - path: templates/部署检查清单.md
       use_when: "上线前逐项检查。"
+    - path: templates/部署前Go-No-Go检查表.md
+      use_when: "正式上线前判断是否可发布，并记录证据、阻塞级别、回滚和恢复方案。"
   operations:
     - path: docs/10-后台管理与日常维护.md
       use_when: "设计用户、角色、日志、备份、日常维护。"

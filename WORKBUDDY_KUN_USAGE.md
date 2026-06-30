@@ -1,6 +1,18 @@
 # WorkBuddy / Kun 使用说明
 
-这套方法可以给 WorkBuddy、Kun 或其他 AI 工具使用。关键不是工具名字，而是让 AI 能读到同一套执行规程。
+这套方法可以给 WorkBuddy、Kun、Cursor、ChatGPT Agent、Codex 或其他 AI 工具使用。关键不是工具名字，而是让 AI 能读到同一套执行规程，并尽量替人完成读取、整理、实现、验证和部署前准备。
+
+## 最推荐：通用 agent 启动方式
+
+把这段放到目标项目的第一条消息：
+
+```text
+请先阅读这个方法论仓库的 AI_CONTEXT.md、AI_MANIFEST.yaml 和 docs/13-通用Agent执行指南.md。
+目标是把当前学习/培训项目做成培训进度后台管理网站。
+你先读取项目资料和样例数据，再问我最多 5 个关键问题。
+不要先写代码。先输出第一版范围、页面、数据字段、权限、导入、API、脚本、验证和部署计划。
+我确认后，能由你执行的步骤请你直接执行；只有业务确认、真实数据、账号授权、生产密钥和正式部署需要问我。
+```
 
 ## 推荐方式 1：工具支持项目级 skill
 
@@ -38,6 +50,8 @@ AGENTS.md
 AI_CONTEXT.md
 AI_MANIFEST.yaml
 portable-prompt.md
+docs/13-通用Agent执行指南.md
+templates/AI执行任务单.md
 learning-admin-builder/SKILL.md
 learning-admin-builder/references/requirements-intake.md
 learning-admin-builder/references/mycoach-patterns.md
@@ -48,8 +62,8 @@ learning-admin-builder/references/validation-checklist.md
 然后告诉工具：
 
 ```text
-请先阅读本项目知识库里的 AI_CONTEXT.md，并按 AI_MANIFEST.yaml 的文件地图工作。
-目标是把这个学习项目做成培训进度后台管理网站，不要先写代码，先做需求澄清和方案。
+请先阅读本项目知识库里的 AI_CONTEXT.md、AI_MANIFEST.yaml 和 docs/13-通用Agent执行指南.md。
+目标是把这个学习项目做成培训进度后台管理网站。请先读取项目资料，少问问题，输出方案；我确认后再分阶段执行。
 ```
 
 ## 推荐方式 3：工具只支持一段提示词
@@ -69,8 +83,10 @@ learning-admin-builder/references/validation-checklist.md
 
 1. `AI_CONTEXT.md`
 2. `AI_MANIFEST.yaml`
-3. `portable-prompt.md`
-4. 目标项目自己的需求文档和脱敏样例数据
+3. `docs/13-通用Agent执行指南.md`
+4. `templates/AI执行任务单.md`
+5. `portable-prompt.md`
+6. 目标项目自己的需求文档和脱敏样例数据
 
 如果 Kun 能执行代码，让它在目标项目中遵守：
 

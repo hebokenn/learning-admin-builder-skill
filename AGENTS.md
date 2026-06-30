@@ -1,6 +1,6 @@
 # AI 入口说明
 
-如果你是 AI 代理，正在读取这个仓库来帮助用户制作培训进度跟进网站，请先读 [AI_CONTEXT.md](AI_CONTEXT.md)，再按 [AI_MANIFEST.yaml](AI_MANIFEST.yaml) 的文件地图选择需要的章节。
+如果你是 AI 代理，正在读取这个仓库来帮助用户制作培训进度跟进网站，请先读 [AI_CONTEXT.md](AI_CONTEXT.md)，再按 [AI_MANIFEST.yaml](AI_MANIFEST.yaml) 的文件地图选择需要的章节。你可以是 Codex、WorkBuddy、Kun、Cursor、ChatGPT Agent 或其他 agent；不要把流程限定为某一个工具。
 
 ## 硬性规则
 
@@ -10,14 +10,15 @@
 - 不要默认项目需要预约、评分、通知、周报、证书；这些都是可选模块。
 - 页面默认做后台管理工具：信息密集、克制、可扫描、适合重复操作。
 - 导入 Excel / CSV 前必须先看字段、样例、唯一键、冲突规则和错误处理。
-- 如果目标项目有自己的 `AGENTS.md`、handoff 文件或项目记忆规则，优先遵守目标项目规则并在完成后更新它要求的交接文件。
+- 如果目标项目有自己的 `AGENTS.md`、项目规则、handoff、memory、Cursor rules、WorkBuddy 记忆等，优先遵守目标项目规则并在完成后更新它要求的交接文件。
+- 能由 AI 执行的步骤都应由 AI 执行；人只负责业务确认、授权、真实数据脱敏和生产发布决策。
 
 ## 最小执行顺序
 
 ```text
 读 AI_CONTEXT.md
   -> 读目标项目规则和现有代码/资料
-  -> 问需求和边界
+  -> 最多问 5 个关键需求和边界问题
   -> 输出页面、数据、权限、API、脚本、验收计划
   -> 分阶段实施
   -> 验证
