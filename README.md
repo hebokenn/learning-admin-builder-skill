@@ -8,20 +8,19 @@
 
 人只需要做三件事：
 
-1. 把这个仓库或其中的 `AI_CONTEXT.md`、`AI_MANIFEST.yaml`、`portable-prompt.md` 交给你正在使用的 AI 工具。
+1. 打开 [ONE_CLICK.md](ONE_CLICK.md)，把“一键补水”提示词交给你正在使用的 AI 工具。
 2. 提供培训项目的基本资料，真实数据要先脱敏。
 3. 在 AI 给出第一版范围、页面、字段、权限和部署方案后确认。
 
 其余能让 AI 做的事情，都交给 AI：读取项目、整理需求、分析表格字段、设计页面和数据表、生成代码、运行检查、整理部署步骤、更新交接记录。
 
-给任何 AI 工具的启动语：
+如果同事会打开终端，也可以在本仓库目录运行：
 
-```text
-请先阅读本仓库的 AI_CONTEXT.md 和 AI_MANIFEST.yaml。
-目标是把我的学习/培训项目做成培训进度后台管理网站。
-不要先写代码。请先检查项目资料和样例数据，再问我最多 5 个关键问题，然后输出第一版范围、页面、数据字段、权限、导入、API、脚本、验证和部署计划。
-能由你执行的步骤请直接执行；只有业务确认、账号授权、真实数据脱敏和生产部署审批需要问我。
+```bash
+python3 scripts/one_click_context.py --copy
 ```
+
+这会把精简后的 AI 上下文复制到剪贴板，直接粘贴给任意 agent。
 
 ## 如果你是 AI，先读这里
 
@@ -31,7 +30,7 @@ AI 代理应按这个顺序加载：
 
 1. [AI_CONTEXT.md](AI_CONTEXT.md)：压缩版执行规程，先读。
 2. [AI_MANIFEST.yaml](AI_MANIFEST.yaml)：文件地图和场景路由，快速判断该读哪些文件。
-3. [docs/12-AI如何使用这套方法论.md](docs/12-AI如何使用这套方法论.md)：更详细的 AI 使用说明。
+3. [docs/13-通用Agent执行指南.md](docs/13-通用Agent执行指南.md)：通用 agent 执行说明。
 4. 需要实际执行时，再按场景读取 `docs/`、`templates/` 和 `learning-admin-builder/references/`。
 
 如果目标工具支持 `AGENTS.md`，它会自动提示 AI 从 [AI_CONTEXT.md](AI_CONTEXT.md) 开始。
@@ -52,11 +51,11 @@ AI 代理应按这个顺序加载：
 
 ## 不用全部读完
 
-主路径不是让人按顺序读 14 篇文档，而是让 AI 按场景读取。人只需要先看：
+主路径不是让人按顺序读完整文档，而是让 AI 按场景读取。人只需要先看：
 
-1. [先读我：整体路线](docs/00-先读我.md)
-2. [通用 Agent 执行指南](docs/13-通用Agent执行指南.md)
-3. [AI 执行任务单](templates/AI执行任务单.md)
+1. [ONE_CLICK.md](ONE_CLICK.md)
+2. [先读我：整体路线](docs/00-先读我.md)
+3. [通用 Agent 执行指南](docs/13-通用Agent执行指南.md)
 
 其余文档给 AI 按场景调用：
 
@@ -73,6 +72,7 @@ AI 代理应按这个顺序加载：
 
 ## 可直接复制的材料
 
+- [一键补水](ONE_CLICK.md)
 - [AI 提示词合集](docs/examples/AI提示词合集.md)
 - [页面草图样例](docs/examples/页面草图样例.md)
 - [AI 快速上下文](AI_CONTEXT.md)
@@ -92,28 +92,9 @@ AI 代理应按这个顺序加载：
 - [部署检查清单](templates/部署检查清单.md)
 - [维护记录模板](templates/维护记录模板.md)
 
-## 最重要的原则
-
-不要一开始就让 AI 写代码。正确顺序是：
-
-```text
-讲清楚业务
-  -> 确认角色和权限
-  -> 确认页面
-  -> 确认数据字段
-  -> 确认 API 和脚本
-  -> 生成代码
-  -> 本地运行
-  -> 验收
-  -> 部署上线
-  -> 日常维护
-```
-
-如果直接说“帮我做一个培训网站”，AI 很容易做成好看的演示页，而不是每天能用的后台管理系统。
-
 ## 给不同 AI 工具使用
 
-优先使用通用方式：把 [AI_CONTEXT.md](AI_CONTEXT.md)、[AI_MANIFEST.yaml](AI_MANIFEST.yaml)、[portable-prompt.md](portable-prompt.md) 放进工具的项目规则、知识库、自定义指令或第一条消息。
+优先使用 [ONE_CLICK.md](ONE_CLICK.md)。需要长期放进项目规则时，再把 [AI_CONTEXT.md](AI_CONTEXT.md)、[AI_MANIFEST.yaml](AI_MANIFEST.yaml)、[portable-prompt.md](portable-prompt.md) 放进工具的项目规则、知识库或自定义指令。
 
 如果你使用 Codex，可以额外把本仓库里的 skill 复制到本机：
 
@@ -138,27 +119,9 @@ mkdir -p .workbuddy/skills
 cp -R /path/to/learning-admin-builder-skill/learning-admin-builder .workbuddy/skills/
 ```
 
-## 官方工具链接
+## 工具链接
 
-常用工具入口：
-
-- [ChatGPT](https://chatgpt.com/)
-- [OpenAI Codex 文档](https://developers.openai.com/codex/cloud)
-- [Cursor](https://cursor.com/)
-- WorkBuddy / Kun / 团队自建 agent：使用你团队内部入口，把 `AI_CONTEXT.md`、`AI_MANIFEST.yaml`、`portable-prompt.md` 加入项目规则或知识库。
-- [Visual Studio Code](https://code.visualstudio.com/)
-- [Git](https://git-scm.com/doc)
-- [GitHub Docs](https://docs.github.com/en)
-- [Node.js 下载](https://nodejs.org/en/download)
-- [Next.js 文档](https://nextjs.org/docs)
-- [Vercel 文档](https://vercel.com/docs)
-- [Render 文档](https://render.com/docs)
-- [PostgreSQL 文档](https://www.postgresql.org/docs/)
-- [Supabase 文档](https://supabase.com/docs)
-- [Neon 文档](https://neon.com/docs)
-- [PM2 文档](https://pm2.keymetrics.io/docs/usage/quick-start/)
-- [Nginx 文档](https://nginx.org/en/docs/)
-- [Certbot](https://certbot.eff.org/)
+工具和安装说明统一放在 [docs/02-工具与安装.md](docs/02-工具与安装.md)，README 不重复维护链接清单。
 
 ## 安全提醒
 

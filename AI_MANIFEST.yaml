@@ -3,6 +3,7 @@ language: zh-CN
 purpose: "帮助 AI 和非技术用户把学习、培训、认证、带教项目做成后台管理网站。"
 primary_entrypoints:
   human: README.md
+  one_click: ONE_CLICK.md
   ai: AI_CONTEXT.md
   agent_skill: learning-admin-builder/SKILL.md
   portable_prompt: portable-prompt.md
@@ -17,6 +18,8 @@ rules:
   - "能由 AI 执行的读取、整理、代码、检查、部署前准备，应交给 AI；人只确认业务和授权事项。"
 documents:
   overview:
+    - path: ONE_CLICK.md
+      use_when: "用户希望一键补水、最少阅读、直接启动任意 AI agent。"
     - path: docs/00-先读我.md
       use_when: "用户需要理解整体路线。"
     - path: docs/01-从业务到网站方法论.md

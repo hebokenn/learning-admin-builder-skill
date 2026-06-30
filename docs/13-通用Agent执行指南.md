@@ -25,22 +25,12 @@
 | 检查质量 | lint、build、测试、浏览器、响应式、安全扫描 |
 | 写交接 | 更新目标项目要求的 handoff 或维护记录 |
 
-## 通用启动 Prompt
+## 通用启动方式
 
-把这段复制到任意 AI 工具：
+启动话术统一维护在 [ONE_CLICK.md](../ONE_CLICK.md)。需要给任意 AI 工具“补水”时，优先复制那里的提示词；如果同事能运行命令，直接执行：
 
-```text
-请作为培训进度后台构建 agent 工作。
-
-先阅读当前资料中的 AI_CONTEXT.md、AI_MANIFEST.yaml、README.md。如果没有这些文件，就使用我提供的 portable prompt。
-
-工作规则：
-1. 先检查目标项目文件、样例数据、运行命令、交接规则，再问我问题。
-2. 每次最多问 5 个问题，只问会影响范围、字段、权限、导入、部署的关键问题。
-3. 不要先写代码。先输出第一版范围、延期模块、页面、数据字段、权限、导入、API、脚本、验证、部署计划。
-4. 我确认后，你分阶段执行。能自己运行的检查请自己运行。
-5. 不要提交真实学员数据、.env、数据库、私有导出、账号密码或生产配置。
-6. 完成后输出改了什么、验证了什么、还需要我确认什么。
+```bash
+python3 scripts/one_click_context.py --copy
 ```
 
 ## 推荐执行阶段
@@ -115,11 +105,16 @@ AI 只问会改变实现的问题：
 可以使用这些模板：
 
 - `templates/AI执行任务单.md`
+- `templates/AI执行前项目审查清单.md`
+- `templates/表格字段分析报告.md`
 - `templates/页面确认清单.md`
 - `templates/数据字段清单.md`
 - `templates/权限矩阵.md`
 - `templates/API与脚本清单.md`
-- `templates/部署检查清单.md`
+- `templates/API规格模板.md`
+- `templates/自动化脚本运行手册.md`
+- `templates/本地验证报告.md`
+- `templates/部署前Go-No-Go检查表.md`
 
 ## 阶段 3 到 9：AI 分阶段执行
 
@@ -138,9 +133,9 @@ AI 每阶段都要：
 | 工具类型 | 推荐放法 |
 |---|---|
 | 支持项目规则 | 放 `AGENTS.md`、`AI_CONTEXT.md`、`AI_MANIFEST.yaml` |
-| 支持知识库 | 放 README、AI_CONTEXT、portable-prompt、templates |
+| 支持知识库 | 放 `ONE_CLICK.md`、AI_CONTEXT、AI_MANIFEST、templates |
 | 支持 skill | 放 `learning-admin-builder/` 整个目录 |
-| 只支持一段提示词 | 复制 `portable-prompt.md` |
+| 只支持一段提示词 | 复制 `ONE_CLICK.md` 的启动语；需要完整独立规则时复制 `portable-prompt.md` |
 | 能操作代码仓库 | 让它先读取项目现状并运行检查 |
 | 只能聊天 | 让它先产出需求、页面、字段、权限方案 |
 
