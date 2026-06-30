@@ -8,11 +8,13 @@
 
 人只需要做三件事：
 
-1. 打开 [ONE_CLICK.md](ONE_CLICK.md)，把“一键补水”提示词交给你正在使用的 AI 工具。
+1. 先把这个 GitHub 仓库链接发给 AI：`https://github.com/hebokenn/learning-admin-builder-skill`。
 2. 提供培训项目的基本资料，真实数据要先脱敏。
 3. 在 AI 给出第一版范围、页面、字段、权限和部署方案后确认。
 
 其余能让 AI 做的事情，都交给 AI：读取项目、整理需求、分析表格字段、设计页面和数据表、生成代码、运行检查、整理部署步骤、更新交接记录。
+
+如果 AI 工具不能打开 GitHub 链接，再打开 [ONE_CLICK.md](ONE_CLICK.md)，复制“一键补水”提示词。
 
 如果同事会打开终端，也可以在本仓库目录运行：
 

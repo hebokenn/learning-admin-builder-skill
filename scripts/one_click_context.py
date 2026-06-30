@@ -23,9 +23,17 @@ STARTER = """# Learning Admin Builder 一键补水包
 
 把这份内容粘贴给 WorkBuddy、Kun、Cursor、ChatGPT Agent、Codex 或其他 AI 工具。
 
+公开仓库：
+https://github.com/hebokenn/learning-admin-builder-skill
+
 ## 任务启动语
 
-你是一个通用 AI agent。请使用下面的 Learning Admin Builder 方法论，帮我把学习、培训、入职、认证或课程进度项目做成可长期使用的后台管理网站。
+请先读取这个公开方法论仓库：
+https://github.com/hebokenn/learning-admin-builder-skill
+
+如果你无法打开 GitHub 链接，请使用下面的补水包内容。
+
+你是一个通用 AI agent。请使用这个 Learning Admin Builder 方法论，帮我把学习、培训、入职、认证或课程进度项目做成可长期使用的后台管理网站。
 
 工作方式：
 - 先检查目标项目现有资料、样例数据、项目规则和运行命令。

@@ -4,7 +4,14 @@
 
 ## 最推荐：一键补水
 
-优先使用 [ONE_CLICK.md](ONE_CLICK.md)。如果同事能运行命令，在本仓库目录执行：
+优先把公开仓库链接发给 agent：
+
+```text
+请先读取这个公开方法论仓库：
+https://github.com/hebokenn/learning-admin-builder-skill
+```
+
+如果 agent 不能打开 GitHub 链接，再使用 [ONE_CLICK.md](ONE_CLICK.md)。如果同事能运行命令，在本仓库目录执行：
 
 ```bash
 python3 scripts/one_click_context.py --copy
